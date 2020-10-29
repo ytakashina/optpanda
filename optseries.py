@@ -52,20 +52,18 @@ class OptSeries:
 
         if index is None:
             return create_optvar(name, lb, ub, cat, **kwargs)
-
         if isinstance(index, pd.Index):
             values = [create_optvar(f"{name}[{i}]", lb, ub, cat, **kwargs) for i in index]
-            data = pd.Series(values, index, name=name, dtype=_dtype)
-        elif all(is_list_like(v) for v in index):
+            return OptSeries(pd.Series(values, index, name=name, dtype=_dtype))
+
+        if all(is_list_like(v) for v in index):
             index = pd.MultiIndex.from_product(index)
-            data = OptSeries.create(name, index=index, lb=lb, ub=ub, cat="cat", **kwargs)
+            return OptSeries.create(name, index=index, lb=lb, ub=ub, cat="cat", **kwargs)
         elif is_list_like(index):
-            values = [create_optvar(f"{name}[{i}]", lb, ub, cat, **kwargs) for i in index]
-            data = pd.Series(values, index=index, name=name, dtype=_dtype)
+            index = pd.Index(index)
+            return OptSeries.create(name, index=index, lb=lb, ub=ub, cat="cat", **kwargs)
         else:
             raise ValueError(f"{type(index)} is not supported for ``index``.")
-
-        return OptSeries(data)
 
     def fix(self, data: Series = None):
         """Set mask"""
