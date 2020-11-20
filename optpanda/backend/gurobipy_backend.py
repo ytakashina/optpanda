@@ -6,15 +6,15 @@ except ModuleNotFoundError:
 _MODEL = None
 
 
-def backend():
-    return "gurobipy"
-
-
-def model():
+def init_model():
     raise NotImplementedError()
 
 
-def set_model():
+def get_model():
+    raise NotImplementedError()
+
+
+def set_model(model=None):
     raise NotImplementedError()
 
 

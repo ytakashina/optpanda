@@ -5,7 +5,7 @@ logger = getLogger(__name__)
 
 if 'OPTPANDA_BACKEND' in environ:
     _backend = environ['OPTPANDA_BACKEND']
-    assert _backend in {'pulp', 'ortools'}
+    assert _backend in {'pulp', 'ortools', 'gurobipy'}
     _BACKEND = _backend
 else:
     _BACKEND = 'pulp'
@@ -15,8 +15,7 @@ if _BACKEND == 'pulp':
     logger.info("PuLP backend loaded.")
     from .pulp_backend import *
 elif _BACKEND == 'ortools':
-    # logger.info("OR-Tools backend loaded.")
-    logger.error("OR-Tools backend is not supported currently.")
+    logger.info("OR-Tools backend loaded. The default solver is CBC.")
     from .ortools_backend import *
 elif _BACKEND == 'gurobipy':
     # logger.info("Gurobi Python API backend loaded.")
@@ -25,9 +24,10 @@ elif _BACKEND == 'gurobipy':
 else:
     raise ValueError('Unknown backend: ' + str(_BACKEND))
 
+init_model()
+
 __all__ = [
     "variable",
-    "backend",
-    "model",
+    "get_model",
     "set_model",
 ]

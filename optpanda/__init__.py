@@ -2,8 +2,7 @@ from importlib import reload
 from os import environ
 
 import optpanda.backend
-from optpanda.backend import variable
-from ._varseries import from_index, variables
+from ._varseries import from_index, variable, variables
 
 
 def set_backend(name: str):
@@ -11,7 +10,12 @@ def set_backend(name: str):
     reload(optpanda.backend)
 
 
+def get_backend():
+    return optpanda.backend._BACKEND
+
+
 __all__ = [
+    "get_backend",
     "set_backend",
     "from_index",
     "variable",

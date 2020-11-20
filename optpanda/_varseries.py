@@ -34,6 +34,10 @@ def from_index(name, index: Index, lb=None, ub=None, cat="Continuous", **kwargs)
     return pd.Series(values, index, name=name, dtype=object)
 
 
+def variable(name, lb=None, ub=None, cat="cat", **kwargs):
+    return B.variable(name, lb, ub, cat, **kwargs)
+
+
 def variables(name, index, lb=None, ub=None, cat="Continuous", **kwargs):
     # TODO: 高速化の必要がないか調査。
     # TODO: fix を実装。Gurobi などは変数宣言に時間がかかるため、無駄な変数宣言をしないように。

@@ -5,17 +5,18 @@ from pulp import LpVariable
 logger = getLogger(__name__)
 
 
-def backend():
-    return "pulp"
-
-
-def model():
-    logger.info("PuLP does not need a model before variable creation. Ignored.")
+def init_model():
+    logger.info("PuLP does not need a model before variable creation. Model initialization ignored.")
     return None
 
 
-def set_model():
-    logger.info("PuLP does not need a model before variable creation. Ignored.")
+def get_model():
+    logger.info("PuLP does not need a model before variable creation. Returns None.")
+    return None
+
+
+def set_model(model=None):
+    logger.info("PuLP does not need a model before variable creation. Model assignment ignored.")
 
 
 def variable(name, lb=None, ub=None, cat="Continuous", **kwargs):
