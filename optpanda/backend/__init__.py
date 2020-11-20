@@ -22,7 +22,6 @@ else:
 
 __all__ = [
     "variable",
-    "dtype",
     "backend",
     "model",
     "set_model",

@@ -9,10 +9,6 @@ def backend():
     return 'pulp'
 
 
-def dtype():
-    return LpVariable
-
-
 def model():
     logger.info("PuLP does not need a model before variable creation. Ignored.")
     return None

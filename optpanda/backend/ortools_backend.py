@@ -2,10 +2,6 @@ def backend():
     return 'ortools'
 
 
-def dtype():
-    raise NotImplementedError()
-
-
 def model():
     raise NotImplementedError()
 
