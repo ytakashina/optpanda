@@ -34,11 +34,9 @@ def from_index(name, index: Index, lb=None, ub=None, cat="Continuous", **kwargs)
     return pd.Series(values, index, name=name, dtype=object)
 
 
-def variables(name, index, fix=None, lb=None, ub=None, cat="Continuous", **kwargs):
+def variables(name, index, lb=None, ub=None, cat="Continuous", **kwargs):
+    # TODO: 高速化の必要がないか調査。
     # TODO: fix を実装。Gurobi などは変数宣言に時間がかかるため、無駄な変数宣言をしないように。
-    # TODO: 特に MultiIndex になる場合に sortorder 等の設定で高速化できないか調査
-    if fix is not None:
-        raise Warning("``fix`` has not been implemented yet. This argument will be ignored.")
     if np.ndim(index) > 2:
         raise ValueError("``index`` dimension cannot be greater than 2.")
 
