@@ -6,7 +6,7 @@ logger = getLogger(__name__)
 
 
 def backend():
-    return 'pulp'
+    return "pulp"
 
 
 def model():

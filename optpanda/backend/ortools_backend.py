@@ -1,5 +1,5 @@
 def backend():
-    return 'ortools'
+    return "ortools"
 
 
 def model():

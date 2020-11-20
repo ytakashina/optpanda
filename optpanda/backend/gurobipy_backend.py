@@ -4,3 +4,7 @@ except ModuleNotFoundError:
     pass
 
 _MODEL = None
+
+
+def backend():
+    return "gurobipy"
