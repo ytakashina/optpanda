@@ -51,11 +51,3 @@ def create(name, index, fix=None, lb=None, ub=None, cat="Continuous", **kwargs):
     else:
         raise ValueError(f"{type(index)} is not supported for ``index``.")
     return from_index(name, index, lb, ub, cat, **kwargs)
-
-
-def fix_values(series: Series, values: Series):
-    raise NotImplementedError()
-
-
-def approx_piecewise():
-    raise NotImplementedError()
