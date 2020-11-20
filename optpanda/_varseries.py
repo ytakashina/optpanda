@@ -34,7 +34,7 @@ def from_index(name, index: Index, lb=None, ub=None, cat="Continuous", **kwargs)
     return pd.Series(values, index, name=name, dtype=object)
 
 
-def variable(name, lb=None, ub=None, cat="cat", **kwargs):
+def variable(name, lb=None, ub=None, cat="Continuous", **kwargs):
     return B.variable(name, lb, ub, cat, **kwargs)
 
 
