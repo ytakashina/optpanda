@@ -15,8 +15,13 @@ if _BACKEND == 'pulp':
     logger.info("PuLP backend loaded.")
     from .pulp_backend import *
 elif _BACKEND == 'ortools':
-    logger.info("OR-Tools backend loaded.")
+    # logger.info("OR-Tools backend loaded.")
+    logger.error("OR-Tools backend is not supported currently.")
     from .ortools_backend import *
+elif _BACKEND == 'gurobipy':
+    # logger.info("Gurobi Python API backend loaded.")
+    logger.error("Gurobi Python API backend is not supported currently.")
+    from .gurobipy_backend import *
 else:
     raise ValueError('Unknown backend: ' + str(_BACKEND))
 
